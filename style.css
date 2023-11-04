@@ -1,0 +1,107 @@
+@import url('https://fonts.googleapis.com/css?family=Lato:300,500,700&display=swap');
+
+* {
+  
+}
+
+body {
+  
+}
+
+h1 {
+
+}
+
+h1 button {
+ 
+}
+
+.btn {
+  
+}
+
+.btn-small {
+ 
+}
+
+.btn-ghost {
+
+}
+
+.clear {
+
+}
+
+.cards {
+ 
+}
+
+.card {
+  
+}
+
+.card.active {
+
+}
+
+.card.left {
+ 
+}
+
+.inner-card {
+  
+}
+
+.card.show-answer .inner-card {
+  
+}
+
+.inner-card-front,
+.inner-card-back {
+ 
+}
+
+.inner-card-front {
+
+}
+
+.inner-card-back {
+  
+}
+
+.inner-card-front::after,
+.inner-card-back::after {
+
+}
+
+.navigation {
+ 
+}
+
+.navigation .nav-button {
+
+}
+
+.navigation p {
+  
+}
+
+.add-container {
+  
+}
+
+.add-container.show {
+
+}
+
+.add-container h3 {
+
+}
+
+.form-group label {
+ 
+}
+
+.form-group textarea {
+ 
+}
