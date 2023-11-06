@@ -17,20 +17,27 @@ let currentActiveCard = 0
 const cardsEl =[]
 
 // stoore card data
-const cardsData = [
-        {
-            question: 'What must a variable begin with?',
-            answer: 'A letter, $ or _'
-        },
-        {
-            question: 'What is a variable?',
-            answer: 'Container for a piece of data'
-        },
-        {
-            question: 'Example of Case Sensitive Variable',
-        answer: 'thisIsAVariable'
-        }
-     ];
+const cardsData = getCardsData()
+//setcards data added to local storage 
+function setCardsData(cards) {
+    localStorage.setItem('cards', JSON.stringify(cards))
+    window.location.reload()
+}
+
+// const cardsData = [
+//         {
+//             question: 'What must a variable begin with?',
+//             answer: 'A letter, $ or _'
+//         },
+//         {
+//             question: 'What is a variable?',
+//             answer: 'Container for a piece of data'
+//         },
+//         {
+//             question: 'Example of Case Sensitive Variable',
+//         answer: 'thisIsAVariable'
+//         }
+//      ];
 
      //create all cards
      function createCards() {
@@ -83,10 +90,19 @@ const cardsData = [
 
      }
 
+     //get data from local storage
+
+     function getCardsData() {
+        const cards = JSON.parse(localStorage.getItem('cards'))
+        return cards === null ? [] : cards
+     }
+
      createCards()
 
 
      //event listeners
+
+
 
      nextBtn.addEventListener('click', () => {
         cardsEl[currentActiveCard].className = 'card left'
@@ -119,3 +135,37 @@ const cardsData = [
         updateCurrentText()
 
      })
+
+     //show container for adding
+
+     showBtn.addEventListener('click', () => addContainer.classList.add('show') )
+     
+    //hide 
+     hideBtn.addEventListener('click', () => addContainer.classList.remove('show') )
+
+
+    //add new card
+    addCardBtn.addEventListener('click', () => {
+        const question = questionEl.value 
+        const answer = answerEl.value
+
+        if (question.trim() && answer.trim()){
+            const newCard = {question, answer}
+
+            createCard(newCard)
+            questionEl.value = ''
+            answerEl.value = ''
+
+            addContainer.classList.remove('show')
+            cardsData.push(newCard)
+
+            setCardsData(cardsData)
+
+        }
+    })
+
+    clearBtn.addEventListener('click', () => {
+        localStorage.clear()
+        cardsContainer.innerHTML =''
+        window.location.reload()
+    })
